@@ -1,0 +1,46 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "NehemiasEC",
+      "name": "N Eliseo S Carranza",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/5385440?v=4",
+      "profile": "http://nehemiasec.com",
+      "contributions": [
+        "doc",
+        "bug"
+      ]
+    },
+    {
+      "login": "brylie",
+      "name": "Brylie Christopher Oxley",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/17307?v=4",
+      "profile": "https://bryliechristopheroxley.info",
+      "contributions": [
+        "code",
+        "doc",
+        "bug",
+        "projectManagement"
+      ]
+    },
+    {
+      "login": "dhelbegor",
+      "name": "Adailton Nascimento",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/7838804?v=4",
+      "profile": "https://dhelbegor.github.io/",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "WF-website",
+  "projectOwner": "SpotlightKenya",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
