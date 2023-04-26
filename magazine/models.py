@@ -11,7 +11,7 @@ from modelcluster.contrib.taggit import ClusterTaggableManager
 from modelcluster.fields import ParentalKey
 from modelcluster.models import ClusterableModel
 from taggit.models import TaggedItemBase
-from wagtail.admin.edit_handlers import (
+from wagtail.admin.panels import (
     FieldPanel,
     FieldRowPanel,
     HelpPanel,
