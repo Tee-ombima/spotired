@@ -31,9 +31,9 @@ load_dotenv()
 #ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", default_allowed_hosts).split(",")
 # ALLOWED_HOSTS =['*']
 
-ALLOWED_HOSTS = ['09d5-197-248-108-89.ngrok-free.app','127.0.0.1', 'localhost', 'www.spotlightkenya.club', 'spotlightkenya.club', '167.172.65.222']
+ALLOWED_HOSTS = ['seashell-app-jtzu8.ondigitalocean.app','127.0.0.1', 'localhost', 'www.spotlightkenya.club', 'spotlightkenya.club', '167.172.65.222']
 #default_csrf_trusted_origins = "http://127.0.0.1,https://127.0.0.1,http://localhost,https://localhost,https://SpotlightKenya.ngrok.io"
-CSRF_TRUSTED_ORIGINS=['https://09d5-197-248-108-89.ngrok-free.app','http://127.0.0.1','https://www.spotlightkenya.club/','https://spotlightkenya.club/']
+CSRF_TRUSTED_ORIGINS=['https://seashell-app-jtzu8.ondigitalocean.app/','http://127.0.0.1','https://www.spotlightkenya.club/','https://spotlightkenya.club/']
 #CSRF_TRUSTED_ORIGINS = os.getenv(
 #    "CSRF_TRUSTED_ORIGINS", default_csrf_trusted_origins
 #).split(",")
