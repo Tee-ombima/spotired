@@ -14,16 +14,13 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': os.getenv('DB_NAME'),
-        'HOST': 'localhost',
+        'HOST': os.getenv('DB_HOST'),
         'USER': os.getenv('DB_USER'),
         'PASSWORD': os.getenv('DB_PASSWORD'),
-        'PORT':5433,
-        
+        'PORT': '5432'
     }
 }
-
-#DATABASES['default'] = dj_database_url.config(conn_max_age=10000, ssl_require=True)
-
+DATABASES['default'] = dj_database_url.config(conn_max_age=10000, ssl_require=True)
 
 # AWS_S3_ENDPOINT_URL = 'https://spotlightkenya.sgp1.digitaloceanspaces.com'  # Replace your-region with the region where your bucket is located
 # AWS_S3_SIGNATURE_VERSION = 's3v4'

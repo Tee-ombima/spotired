@@ -206,7 +206,7 @@ WSGI_APPLICATION = "core.wsgi.application"
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 # DATABASE_URL = os.getenv("DATABASE_URL")
 
-#from .cdn.conf import *  #noqa
+from .cdn.conf import *  #noqa
 
 NOT_COLLECTING_STATICFILES = len(sys.argv) > 0 and sys.argv[1] != "collectstatic"
 
