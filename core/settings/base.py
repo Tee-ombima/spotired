@@ -319,7 +319,6 @@ WAGTAIL_FRONTEND_LOGIN_URL = '/staffarea/login/'
 
 # COLLECTFAST_STRATEGY = "collectfast.strategies.filesystem.FileSystemStrategy"
 # COLLECTFAST_ENABLED = False
-SECURE_CONTENT_TYPE_NOSNIFF = True
 
 
 
