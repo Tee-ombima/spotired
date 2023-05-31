@@ -31,7 +31,7 @@ class Blog(Page, HitCountMixin):
         on_delete=models.SET_NULL,
         related_name='+',
     )
-    teaser = models.TextField(max_length=100, null=True, blank=True)
+    teaser = models.TextField(max_length=500, null=True, blank=True)
     hit_count_generic = GenericRelation(HitCount, object_id_field='object_pk',related_query_name='hit_count_generic_relation')
     display_image = models.ForeignKey(
         'wagtailimages.Image',

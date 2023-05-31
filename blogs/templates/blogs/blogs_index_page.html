@@ -30,9 +30,12 @@
     .folder-icon {
         margin-right: 5px;
     }
-    .eye-icon {
-        margin-right: 5px;
-        color: #888888;
+    .card-text {
+        word-wrap: break-word;
+    }
+    .teaser-section {
+        column-count: 3;
+        column-gap: 20px;
     }
 </style>
 {% endblock %}
@@ -47,10 +50,10 @@
     </div>
 
     {% if blogs %}
-        {% for blog in blogs %}
-            <div class="card-body">
-                <article class="box page-content">
-                    {% image blog.display_image fill-800x240 as my_image %}
+        <div class="card-body">
+            <article class="box page-content">
+                {% image blog.display_image fill-800x240 as my_image %}
+                {% for blog in blogs %}
                     <section>
                         <h5 class="card-title font-weight-bold">
                             <i class="fa fa-star star-icon" aria-hidden="true"></i>{{ blog.title }}
@@ -69,19 +72,17 @@
                             &nbsp;&nbsp;
                             <i class="fa fa-calendar" aria-hidden="true"></i>
                             {{ blog.start_date | timezone:"Africa/Nairobi" | date:"F d, Y" }} Africa/Nairobi
-                            &nbsp;&nbsp;
-                            <i class="fa fa-eye eye-icon" aria-hidden="true"></i>{% get_hit_count for blog %}
                         </p>
                         {% if blog.teaser %}
-                            <div class="card-text" style="word-wrap: break-word;">
+                            <div class="teaser-section">
                                 {{ blog.teaser | richtext }}
                             </div>
                             <p><a href="{% pageurl blog %}">Continue Reading</a></p>
                         {% endif %}
                     </section>
-                </article>
-            </div>
-        {% endfor %}
+                {% endfor %}
+            </article>
+        </div>
 
         <div class="step-links ms-3 mt-1 text-center">
             {% if blogs.has_previous %}
