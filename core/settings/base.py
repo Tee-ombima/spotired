@@ -204,7 +204,7 @@ WSGI_APPLICATION = "core.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
-# DATABASE_URL = os.getenv("DATABASE_URL")
+
 
 from .cdn.conf import *  #noqa
 
