@@ -9,6 +9,9 @@ from wagtail.documents import urls as wagtaildocs_urls
 from django.views.generic import RedirectView
 from django.contrib.staticfiles.storage import staticfiles_storage
 
+
+
+
 from magazine import urls as magazine_urls
 from search import views as search_views
 from subscription import urls as subscription_urls
@@ -41,14 +44,14 @@ urlpatterns = [
     path("magazine/", include(magazine_urls), name="magazine"),
     # path('pdf/<int:pdf_document_id>/', serve_pdf, name='serve_pdf'),
 
-    #path("blog/", include(blog_urls), name="blog"),
+    
 
     path("orders/", include("orders.urls", namespace="orders")),
     path("payment/", include("payment.urls", namespace="payment")),
     path("documents/", include(wagtaildocs_urls)),
     re_path(r"^search/$", search_views.search, name="search"),
     path("subscriptions/", include(subscription_urls), name="subscriptions"),
-    #path("blogs/", include(blogs_urls), name="blogs"),
+    
 
     # For anything not caught by a more specific rule above, hand over to
     # Wagtail's page serving mechanism. This should be the last pattern in
@@ -61,6 +64,8 @@ urlpatterns = [
     ),
     # Alternatively, if you want Wagtail pages to be served from a subpath
     # of your site, rather than the site root:
+    #path("blogs/", include("blogs.urls", namespace="blogs")),
+
     #    url(r'^pages/', include(wagtail_urls)),
 ]
 

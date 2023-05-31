@@ -15,6 +15,8 @@ import os
 import sys
 from decouple import config
 
+
+
 from django.core.management.utils import get_random_secret_key
 
 from braintree import Configuration as BraintreeConfiguration
@@ -92,6 +94,7 @@ INSTALLED_APPS = [
     "documents",
     "donations",
     "blogs",
+    
     "facets",
     "forms",
     "home",
@@ -150,6 +153,7 @@ INSTALLED_APPS = [
     "wagtailmedia",
 ]
 
+
 CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 MIDDLEWARE = [
@@ -200,9 +204,9 @@ WSGI_APPLICATION = "core.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
-DATABASE_URL = os.getenv("DATABASE_URL")
+# DATABASE_URL = os.getenv("DATABASE_URL")
 
-from .cdn.conf import *  #noqa
+#from .cdn.conf import *  #noqa
 
 NOT_COLLECTING_STATICFILES = len(sys.argv) > 0 and sys.argv[1] != "collectstatic"
 
@@ -214,7 +218,7 @@ NOT_COLLECTING_STATICFILES = len(sys.argv) > 0 and sys.argv[1] != "collectstatic
 #             'HOST': 'localhost',
 #             'USER': os.getenv('DB_USER'),
 #             'PASSWORD': os.getenv('DB_PASSWORD'),
-#             'PORT': '5432',
+#             'PORT': '',
 #         }
 #     }
 

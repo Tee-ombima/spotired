@@ -14,20 +14,22 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': os.getenv('DB_NAME'),
-        'HOST': os.getenv('DB_HOST'),
+        'HOST': 'localhost',
         'USER': os.getenv('DB_USER'),
         'PASSWORD': os.getenv('DB_PASSWORD'),
+        'PORT':5433,
         
     }
 }
-DATABASES['default'] = dj_database_url.config(conn_max_age=10000, ssl_require=True)
+
+#DATABASES['default'] = dj_database_url.config(conn_max_age=10000, ssl_require=True)
 
 
-AWS_S3_ENDPOINT_URL = 'https://spotlightkenya.sgp1.digitaloceanspaces.com'  # Replace your-region with the region where your bucket is located
-AWS_S3_SIGNATURE_VERSION = 's3v4'
-AWS_ACCESS_KEY_ID="DO00WBEEMAQWJ4FZCGLX"
-AWS_SECRET_ACCESS_KEY="hx0HQ6vEKqP2eW/AICZcWBCg5JfSQBSPEj8tc+f5ERI"
-AWS_STORAGE_BUCKET_NAME='spotlightkenya'
+# AWS_S3_ENDPOINT_URL = 'https://spotlightkenya.sgp1.digitaloceanspaces.com'  # Replace your-region with the region where your bucket is located
+# AWS_S3_SIGNATURE_VERSION = 's3v4'
+# AWS_ACCESS_KEY_ID="DO00WBEEMAQWJ4FZCGLX"
+# AWS_SECRET_ACCESS_KEY="hx0HQ6vEKqP2eW/AICZcWBCg5JfSQBSPEj8tc+f5ERI"
+# AWS_STORAGE_BUCKET_NAME='spotlightkenya'
 
 # AWS_LOCATION = os.getenv("AWS_LOCATION", "static")
 # PUBLIC_MEDIA_LOCATION = os.getenv("PUBLIC_MEDIA_LOCATION", "media")

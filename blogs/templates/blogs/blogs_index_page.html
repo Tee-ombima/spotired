@@ -9,6 +9,34 @@
 
 {% block body_class %}template-magazineindexpage{% endblock %}
 
+{% block extra_css %}
+<style>
+    .card-title {
+        text-transform: uppercase;
+        font-size: 22px;
+    }
+    .star-icon {
+        margin-right: 5px;
+        color: gold;
+    }
+    .blog-date {
+        font-size: 14px;
+        color: #888888;
+    }
+    .author-category-date {
+        font-size: 12px;
+        color: #888888;
+    }
+    .folder-icon {
+        margin-right: 5px;
+    }
+    .eye-icon {
+        margin-right: 5px;
+        color: #888888;
+    }
+</style>
+{% endblock %}
+
 {% block content %}
     <h1>
         {{ page.title }}
@@ -19,50 +47,45 @@
     </div>
 
     {% if blogs %}
-
         {% for blog in blogs %}
-        {% image blog.display_image max-1200x800 as my_image %}
-
-
-
-  <div class="card mb-2" >
-    {% if my_image %}
-   <img src="{{ my_image.url }}" class="card-img-top" alt="{{ my_image.alt }}" />
- {% endif %}
-
-
-                <div class="card-body">
-                    <p class="card-title font-weight-bold">
-                        {{ blog.title }} -
-                        <span>{{ blog.start_date | timezone:"Africa/Nairobi" | date:"F d, Y" }} Africa/Nairobi</span>
-                    </p>
-
-                    {% if blog.teaser %}
-                        <p class="card-text">
-                            {{ blog.teaser }}
+            <div class="card-body">
+                <article class="box page-content">
+                    {% image blog.display_image fill-800x240 as my_image %}
+                    <section>
+                        <h5 class="card-title font-weight-bold">
+                            <i class="fa fa-star star-icon" aria-hidden="true"></i>{{ blog.title }}
+                        </h5>
+                        {% if my_image %}
+                            <span class="img-responsive">
+                                <img src="{{ my_image.url }}" class="card-img-top" alt="{{ my_image.alt }}" />
+                            </span>
+                        {% endif %}
+                        <p class="author-category-date">
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                            <a href="?author={{ blog.author.id }}">{{ blog.author.email }}</a>
+                            &nbsp;&nbsp;
+                            <i class="fa fa-folder folder-icon" aria-hidden="true"></i>
+                            <a href="?category={{ blog.category }}">{{ blog.category }}</a>
+                            &nbsp;&nbsp;
+                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                            {{ blog.start_date | timezone:"Africa/Nairobi" | date:"F d, Y" }} Africa/Nairobi
+                            &nbsp;&nbsp;
+                            <i class="fa fa-eye eye-icon" aria-hidden="true"></i>{% get_hit_count for blog %}
                         </p>
-                    {% endif %}
-                    <p>
-                      <span class="p-viewer">
-  					<i class="fa fa-eye" aria-hidden="true"> {% get_hit_count for blog %}</i>
-  				</span>
-
-                    </p>
-
-
-
-                    <a href="{% pageurl blog %}" class="btn btn-outline-primary btn-sm stretched-link">
-                        <i class="bi bi-info-circle" aria-hidden="true"></i>
-                        View details
-                    </a>
-                </div>
+                        {% if blog.teaser %}
+                            <div class="card-text" style="word-wrap: break-word;">
+                                {{ blog.teaser | richtext }}
+                            </div>
+                            <p><a href="{% pageurl blog %}">Continue Reading</a></p>
+                        {% endif %}
+                    </section>
+                </article>
             </div>
-
         {% endfor %}
 
         <div class="step-links ms-3 mt-1 text-center">
             {% if blogs.has_previous %}
-                <a href="?page={{ blogs.previous_page_number }}" class="btn btn-outline-primary btn-sm">previous</a>
+                <a href="?page={{ blogs.previous_page_number }}" class="btn btn-outline-primary btn-sm">Previous</a>
             {% endif %}
 
             <span class="current">
@@ -70,7 +93,7 @@
             </span>
 
             {% if blogs.has_next %}
-                <a href="?page={{ blogs.next_page_number }}" class="btn btn-outline-primary btn-sm">next</a>
+                <a href="?page={{ blogs.next_page_number }}" class="btn btn-outline-primary btn-sm">Next</a>
             {% endif %}
         </div>
     {% else %}

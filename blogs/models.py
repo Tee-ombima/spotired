@@ -10,15 +10,27 @@ from wagtail import blocks
 from wagtail.fields import RichTextField, StreamField
 from wagtail.models import Page
 from wagtail.search import index
+from django.utils.text import Truncator
+
 
 from streams.blocks import FormattedImageChooserStructBlock, HeadingBlock, SpacerBlock
 from hitcount.models import HitCountMixin, HitCount
 from django.contrib.contenttypes.fields import GenericRelation
 from wagtail.images.blocks import ImageChooserBlock
+from django.conf import settings
+from django.contrib.auth import get_user_model
 
+User = get_user_model()
 
 
 class Blog(Page, HitCountMixin):
+    author = models.ForeignKey(
+        User,
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+',
+    )
     teaser = models.TextField(max_length=100, null=True, blank=True)
     hit_count_generic = GenericRelation(HitCount, object_id_field='object_pk',related_query_name='hit_count_generic_relation')
     display_image = models.ForeignKey(
@@ -28,8 +40,6 @@ class Blog(Page, HitCountMixin):
         on_delete=models.SET_NULL,
         related_name='+'
     )
-
-
 
     body = StreamField(
         [
@@ -51,11 +61,14 @@ class Blog(Page, HitCountMixin):
     )
 
     website = models.URLField(blank=True, null=True, max_length=300)
+    category = models.CharField(max_length=100, null=True, blank=True)
 
     drupal_node_id = models.IntegerField(null=True, blank=True)
 
-
     content_panels = Page.content_panels + [
+        
+        FieldPanel('author'),
+        FieldPanel('category'),
         FieldPanel('display_image'),
         FieldPanel("teaser"),
         FieldPanel("body"),
@@ -79,12 +92,11 @@ class Blog(Page, HitCountMixin):
     class Meta:
         db_table = "blogs"
         ordering = ["start_date"]
+    
 
 
 class BlogsIndexPage(Page):
     intro = RichTextField(blank=True)
-
-    #templates = "blogs/blogs_index_page.html"
 
     content_panels = Page.content_panels + [FieldPanel("intro")]
 
@@ -98,9 +110,13 @@ class BlogsIndexPage(Page):
 
         upcoming_blogs = (
             Blog.objects.all()
-
             .order_by("-start_date")
         )
+
+        # Filter by author
+        selected_author = request.GET.get("author")
+        if selected_author:
+            upcoming_blogs = upcoming_blogs.filter(author_id=selected_author)
 
         # Show three archive issues per page
         paginator = Paginator(upcoming_blogs, 7)
@@ -116,6 +132,11 @@ class BlogsIndexPage(Page):
             # If page is out of range (e.g. 9999), deliver last page of results.
             paginated_blogs = paginator.page(paginator.num_pages)
 
+        # Get the authors for the filter
+        authors = User.objects.all()
+
         context["blogs"] = paginated_blogs
+        context["authors"] = authors
+        context["selected_author"] = selected_author
 
         return context
