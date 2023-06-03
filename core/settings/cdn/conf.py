@@ -7,7 +7,7 @@ AWS_S3_ENDPOINT_URL="https://kenyabucket.sgp1.digitaloceanspaces.com"
 AWS_S3_OBJECT_PARAMETERS = {
     "CacheControl": "max-age=86400",
 }
-#AWS_LOCATION = f"https://{AWS_STORAGE_BUCKET_NAME}.sgp1.digitaloceanspaces.com/kenyabucket"
+AWS_LOCATION = f"https://kenyabucket.sgp1.digitaloceanspaces.com/kenyabucket"
 
 DEFAULT_FILE_STORAGE = "core.settings.cdn.backends.MediaRootS3Boto3Storage"
 STATICFILES_STORAGE = "core.settings.cdn.backends.StaticRootS3Boto3Storage"
