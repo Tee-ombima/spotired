@@ -47,6 +47,7 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 # DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
 
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", get_random_secret_key())
+os.environ["DISABLE_COLLECTSTATIC"] = "True"
 
 DEBUG = os.getenv("DEBUG", "False")
 
