@@ -49,6 +49,8 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", get_random_secret_key())
 os.environ["DISABLE_COLLECTSTATIC"] = "True"
 
+
+
 DEBUG = os.getenv("DEBUG", "False")
 
 # Settings related to DigitalOcean Spaces
