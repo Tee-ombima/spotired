@@ -9,5 +9,7 @@ AWS_S3_OBJECT_PARAMETERS = {
 }
 AWS_LOCATION = f"https://kenyabucket.sgp1.digitaloceanspaces.com/kenyabucket"
 
+
+
 DEFAULT_FILE_STORAGE = "core.settings.cdn.backends.MediaRootS3Boto3Storage"
 STATICFILES_STORAGE = "core.settings.cdn.backends.StaticRootS3Boto3Storage"
