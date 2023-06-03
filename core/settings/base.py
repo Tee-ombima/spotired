@@ -336,33 +336,25 @@ DEFAULT_FROM_EMAIL = 'www@spotlightkenya.club'
 DEFAULT_TO_EMAIL = 'spotlightkenya7@gmail.com'
 EMAIL_TO = 'spotlightkenya7@gmail.com'
 
-AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
-AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
-AWS_STORAGE_BUCKET_NAME = os.environ.get("AWS_STORAGE_BUCKET_NAME")
-AWS_S3_ENDPOINT_URL = "https://skbucket.sgp1.digitaloceanspaces.com"
-AWS_S3_OBJECT_PARAMETERS = {
-    "CacheControl": "max-age=86400",
-}
 
-# Specify the storage backend for static files
+
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-STATIC_BUCKET_NAME = AWS_STORAGE_BUCKET_NAME
+AWS_S3_REGION_NAME = os.getenv("AWS_S3_REGION_NAME", "sgp1")
+AWS_ACCESS_KEY_ID = os.getenv("AWS_ACCESS_KEY_ID")
+AWS_SECRET_ACCESS_KEY = os.getenv("AWS_SECRET_ACCESS_KEY")
+AWS_STORAGE_BUCKET_NAME = os.getenv("AWS_STORAGE_BUCKET_NAME")
+AWS_LOCATION = os.getenv("AWS_LOCATION", "assets")
+PUBLIC_MEDIA_LOCATION = os.getenv("PUBLIC_MEDIA_LOCATION", "media")
+AWS_DEFAULT_ACL = "public-read"
+AWS_S3_ENDPOINT_URL = f"https://wfbucket.sgp1.digitaloceanspaces.com"
+AWS_S3_OBJECT_PARAMETERS = {"CacheControl": "max-age=86400"}
 
-# The prefix to add to the static file paths (optional)
-STATIC_URL = f'{AWS_S3_ENDPOINT_URL}/{STATIC_BUCKET_NAME}/'
 
-# Set the directory where the collected static files will be stored locally before uploading to S3
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-# Set the URL prefix for static files served from S3
-AWS_S3_CUSTOM_DOMAIN = f'{STATIC_BUCKET_NAME}.{AWS_S3_ENDPOINT_URL}'
 
-# Set the storage backend for media files (if applicable)
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-# The S3 bucket to use for media files (if applicable)
-MEDIA_BUCKET_NAME = AWS_STORAGE_BUCKET_NAME
 
-# The prefix to add to the media file paths (optional, separate from static files)
-MEDIA_URL = f'{AWS_S3_ENDPOINT_URL}/{MEDIA_BUCKET_NAME}/'
+STATIC_URL = f'https://wfbucket.sgp1.digitaloceanspaces.com/static/'
+MEDIA_URL = f'https://wfbucket.sgp1.digitaloceanspaces.com/media/'
