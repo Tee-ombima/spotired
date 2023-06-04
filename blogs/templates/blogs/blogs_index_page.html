@@ -42,10 +42,7 @@
                     <i class="fa fa-calendar" aria-hidden="true"></i>
                     {{ blog.start_date | timezone:"Africa/Nairobi" | date:"F d, Y" }} Africa/Nairobi
                 </p>
-                <h5 class="card-title font-weight-bold">
-                    {{ blog.title }} -
-                    <span>{{ blog.start_date | timezone:"Africa/Nairobi" | date:"F d, Y" }} Africa/Nairobi</span>
-                </h5>
+               
                 {% if blog.teaser %}
                             <div class="teaser-section">
                                 {{ blog.teaser | richtext }}
