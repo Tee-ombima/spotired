@@ -22,9 +22,9 @@
         <em><strong>Africa/Nairobi</strong></em>
     </p>
 
-
-
-
+    {% if blog.display_image %}
+        <meta property="og:image" content="{{ blog.display_image.url }}">
+    {% endif %}
 
     {% if blog.body %}
         {{ blog.body }}
@@ -34,7 +34,7 @@
         <a
             href="{{ blog.specific.website }}"
             class="btn btn-primary btn-sm"
-            target="blank"
+            target="_blank"
         >
             <i class="bi bi-link" aria-hidden="true"></i>
             Visit blog website
