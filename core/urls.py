@@ -16,7 +16,7 @@ from magazine import urls as magazine_urls
 from search import views as search_views
 from subscription import urls as subscription_urls
 from wagtail.admin.views.account import LoginView
-from blogs import urls as blogs_urls
+
 # from magazine.views import serve_pdf
 
 
@@ -64,7 +64,7 @@ urlpatterns = [
     ),
     # Alternatively, if you want Wagtail pages to be served from a subpath
     # of your site, rather than the site root:
-    path("blogs/", include("blogs.urls", namespace="blogs")),
+    #path("blogs/", include("blogs.urls", namespace="blogs")),
 
     #    url(r'^pages/', include(wagtail_urls)),
 ]
