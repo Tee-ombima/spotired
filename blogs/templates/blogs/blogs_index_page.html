@@ -37,6 +37,9 @@
         column-count: 3;
         column-gap: 20px;
     }
+    .continue-reading {
+        text-align: right;
+    }
 </style>
 {% endblock %}
 
@@ -80,7 +83,9 @@
                             <div class="teaser-section">
                                 {{ blog.teaser | richtext }}
                             </div>
-                            <p><a href="{% pageurl blog %}">Continue Reading</a></p>
+                            <p class="continue-reading">
+                                <a href="{% pageurl blog %}">Continue Reading</a>
+                            </p>
                         {% endif %}
                     </section>
                 {% endfor %}

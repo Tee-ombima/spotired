@@ -27,7 +27,9 @@
     {% endif %}
 
     {% if blog.body %}
-        {{ blog.body }}
+        <div class="teaser-section">
+            {{ blog.body }}
+        </div>
     {% endif %}
 
     {% if blog.website %}
@@ -40,4 +42,13 @@
             Visit blog website
         </a>
     {% endif %}
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    .teaser-section {
+        column-count: 3;
+        column-gap: 20px;
+    }
+</style>
 {% endblock %}
