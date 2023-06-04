@@ -18,7 +18,11 @@
     <div class="intro">
         {{ page.intro | richtext }}
     </div>
-
+    <style>
+        .box.page-content {
+            padding: 20px; /* Add desired padding */
+        }
+    </style>
     {% if blogs %}
         {% for blog in blogs %}
         <article class="box page-content">
