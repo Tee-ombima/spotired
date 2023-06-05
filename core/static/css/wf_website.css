@@ -175,6 +175,7 @@ a:active { text-decoration: none; }
     left: 0;
     width: 100%;
     z-index: 9999;
+	margin-bottom: 20px;
 } */
 
 /* .sticky-top img {
