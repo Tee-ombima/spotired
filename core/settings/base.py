@@ -358,3 +358,25 @@ AWS_S3_OBJECT_PARAMETERS = {"CacheControl": "max-age=86400"}
 
 STATIC_URL = f'https://wfbucket.sgp1.digitaloceanspaces.com/static/'
 MEDIA_URL = f'https://wfbucket.sgp1.digitaloceanspaces.com/media/'
+
+# settings.py
+
+# ...
+
+# Configure the session backend
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'  # Use database-backed sessions
+SESSION_COOKIE_NAME = 'sessionid'  # Set the session cookie name (optional)
+
+# Set the session cookie domain (optional, use if needed)
+# SESSION_COOKIE_DOMAIN = '.example.com'
+
+# Set the session cookie age (optional, in seconds)
+# SESSION_COOKIE_AGE = 86400  # Example: 1 day (86400 seconds)
+
+# Set the session cookie secure flag (True or False)
+SESSION_COOKIE_SECURE = True  # Set to True for HTTPS-only cookies
+
+# Set the session cookie HTTP only flag (True or False)
+SESSION_COOKIE_HTTPONLY = True  # Set to True to prevent JavaScript access to cookies
+
+# ...
