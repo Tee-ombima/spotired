@@ -63,7 +63,9 @@ class WfPage(Page):
             ("image", ImageChooserBlock()),
             ("spacer", SpacerBlock()),
         ]
-        ,use_json_field=True,
+        ,null=False,
+        blank=True,
+        use_json_field=True,
     )
     body_migrated = models.TextField(
         help_text="Used only for content from old Drupal website.",
