@@ -169,23 +169,23 @@ a:hover { text-decoration: none; }
 
 
 a:active { text-decoration: none; }
-.sticky-top {
+/* .sticky-top {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 9999;
 	margin-bottom: 20px;
-} */
+}  */
 
-/* .sticky-top img {
+.sticky-top img {
     display: block;
     margin: 0 auto;
     max-width: 100%;
-} */
-/* .sticky-top {
+} 
+.sticky-top {
     position: relative;
-} */
+}
 
 
 /* .blog_grid {
