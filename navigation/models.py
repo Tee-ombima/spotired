@@ -1,5 +1,4 @@
 from django.db import models
-
 from wagtail.admin.panels import FieldPanel
 from wagtail.contrib.settings.models import BaseSiteSetting, register_setting
 from wagtail.fields import StreamField
@@ -13,7 +12,7 @@ from .blocks import (
 
 @register_setting
 class NavigationMenuSetting(BaseSiteSetting):
-    items = StreamField(
+    menu_items = StreamField(
         [
             ("internal_page", NavigationPageChooserBlock()),
             ("external_link", NavigationExternalLinkBlock()),
@@ -23,7 +22,7 @@ class NavigationMenuSetting(BaseSiteSetting):
     )
 
     panels = [
-        FieldPanel("items"),
+        FieldPanel("menu_items"),
     ]
 
     class Meta:
