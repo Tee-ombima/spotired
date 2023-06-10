@@ -56,7 +56,7 @@ class NavigationPageChooserBlock(wagtail_blocks.StructBlock):
 
 class NavigationDropdownMenuBlock(wagtail_blocks.StructBlock):
     title = wagtail_blocks.CharBlock()
-    menu_items = wagtail_blocks.StreamBlock(
+    items = wagtail_blocks.StreamBlock(
         [
             ("page", NavigationPageChooserBlock()),
             ("external_link", NavigationExternalLinkBlock()),
