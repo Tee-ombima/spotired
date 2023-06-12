@@ -10,4 +10,12 @@
     {% for block in page.body %}
         {% include_block block %}
     {% endfor %}
+
+    {% for user in users %}
+    <div class="floating-tile">
+        {{ User.email }}
+    </div>
+{% endfor %}
+
+
 {% endblock %}
