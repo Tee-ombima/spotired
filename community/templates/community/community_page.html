@@ -1,6 +1,5 @@
 {% extends "base.html" %}
-
-{% load wagtailcore_tags wagtailimages_tags %}
+{% load wagtailcore_tags wagtailimages_tags member_tags %}
 
 {% block body_class %}template-community-page{% endblock %}
 
@@ -10,14 +9,14 @@
     {% for block in page.body %}
         {% include_block block %}
     {% endfor %}
+    
     <h1>Member's List</h1>
     <ul>
-        {% for user in users %}
-            <li>{{ user.User.email }}</li>
+        {% get_member_emails as emails %}
+        {% for email in emails %}
+            <li>{{ email }}</li>
         {% empty %}
             <li>No users found.</li>
         {% endfor %}
     </ul>
-
-
 {% endblock %}
