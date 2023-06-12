@@ -10,12 +10,14 @@
     {% for block in page.body %}
         {% include_block block %}
     {% endfor %}
-
-    {% for user in users %}
-    <div class="floating-tile">
-        {{ User.email }}
-    </div>
-{% endfor %}
+    <h1>Member's List</h1>
+    <ul>
+        {% for user in users %}
+            <li>{{ user.email }}</li>
+        {% empty %}
+            <li>No users found.</li>
+        {% endfor %}
+    </ul>
 
 
 {% endblock %}
