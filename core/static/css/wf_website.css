@@ -203,3 +203,7 @@ img {
   image-rendering: pixelated;
   -ms-interpolation-mode: nearest-neighbor;
 }
+a{
+  text-decoration-line: none;
+  
+}
