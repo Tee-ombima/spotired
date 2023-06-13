@@ -1,3 +1,6 @@
+@import url('/core/static/css/fontawesome.css');
+
+
 a:not(.nav-link):not(.wagtail-userbar-link):not(.wagtail-userbar__item>a):not(.card-link):not(.page-link):not(.btn) {
 	color: #16b5e0;
 	transition: background-color .5s;
