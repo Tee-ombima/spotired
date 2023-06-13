@@ -16,10 +16,15 @@
     {% if members %}
         {% paginate members by 20 %}
         <ul>
-            {% for member in members %}
-                <li>{{ member.email }} starring as {{ member.username }}</li>
+            {% get_member_emails as emails %}
+            {% for email in emails %}
+                {% get_user_from_email email as user %}
+                <li>{{ user.email }} starring as {{ user.username }}</li>
+            {% empty %}
+                <li>No members found.</li>
             {% endfor %}
         </ul>
+        
 
         <div class="pagination">
             <span class="step-links">
