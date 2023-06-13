@@ -9,14 +9,14 @@ from .managers import UserManager
 
 
 class User(AbstractBaseUser, PermissionsMixin):
-    # source: https://testdriven.io/blog/django-custom-user-model/
     email = models.EmailField(unique=True)
+    username = models.CharField(max_length=150, unique=True, default='spotlight')
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
 
     USERNAME_FIELD = "email"
     EMAIL_FIELD = "email"
-    REQUIRED_FIELDS = []
+    REQUIRED_FIELDS = ["username"]
 
     objects = UserManager()
 
