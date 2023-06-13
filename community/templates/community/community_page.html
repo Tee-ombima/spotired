@@ -11,29 +11,25 @@
     {% endfor %}
     
     <h1>Member's List</h1>
-    {% if members %}
-        <ul>
-            {% for member in members %}
-                <li>{{ member.email }} starring as {{ member.username }}</li>
-            {% empty %}
-                <li>No members found.</li>
-            {% endfor %}
-        </ul>
+    <ul>
+        {% get_member_emails as emails %}
+        {% for email in emails %}
+            <li>{{ email }} starring as {{username}}</li>
+        {% empty %}
+            <li>No member's found.</li>
+        {% endfor %}
+    </ul>
+    <div class="pagination">
+        {% if members.has_previous %}
+            <a href="?page={{ members.previous_page_number }}">previous</a>
+        {% endif %}
 
-        <div class="pagination">
-            {% if members.has_previous %}
-                <a href="?page={{ members.previous_page_number }}">previous</a>
-            {% endif %}
+        <span class="current-page">
+            Page {{ members.number }} of {{ members.paginator.num_pages }}
+        </span>
 
-            <span class="current-page">
-                Page {{ members.number }} of {{ members.paginator.num_pages }}
-            </span>
-
-            {% if members.has_next %}
-                <a href="?page={{ members.next_page_number }}">next</a>
-            {% endif %}
-        </div>
-    {% else %}
-        <p>No members found.</p>
-    {% endif %}
+        {% if members.has_next %}
+            <a href="?page={{ members.next_page_number }}">next</a>
+        {% endif %}
+    </div>
 {% endblock %}

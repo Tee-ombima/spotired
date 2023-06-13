@@ -7,4 +7,4 @@ def member_list(request):
     paginator = Paginator(users, 20)  # Display 20 members per page
     page_number = request.GET.get('page')
     members = paginator.get_page(page_number)
-    return render(request, 'member_list.html', {'members': members})
+    return render(request, 'community_page.html', {'members': members})
