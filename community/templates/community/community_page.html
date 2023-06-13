@@ -11,6 +11,49 @@
     {% endfor %}
     
     <h1>Member's List</h1>
+    {% get_member_emails as members %}
+
+    {% if members %}
+        {% paginate members by 20 %}
+        <ul>
+            {% for member in members %}
+                <li>{{ member.email }} starring as {{ member.username }}</li>
+            {% endfor %}
+        </ul>
+
+        <div class="pagination">
+            <span class="step-links">
+                {% if members.has_previous %}
+                    <a href="?page={{ members.previous_page_number }}">previous</a>
+                {% endif %}
+
+                <span class="current-page">
+                    Page {{ members.number }} of {{ members.paginator.num_pages }}
+                </span>
+
+                {% if members.has_next %}
+                    <a href="?page={{ members.next_page_number }}">next</a>
+                {% endif %}
+            </span>
+        </div>
+    {% else %}
+        <p>No members found.</p>
+    {% endif %}
+{% endblock %}
+
+<!-- {% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags member_tags %}
+
+{% block body_class %}template-community-page{% endblock %}
+
+{% block content %}
+    <h1>{{ page.title }}</h1>
+
+    {% for block in page.body %}
+        {% include_block block %}
+    {% endfor %}
+    
+    <h1>Member's List</h1>
     <ul>
         {% get_member_emails as emails %}
         {% for email in emails %}
@@ -19,4 +62,4 @@
             <li>No member's found.</li>
         {% endfor %}
     </ul>
-{% endblock %}
+{% endblock %} -->
