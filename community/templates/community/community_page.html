@@ -12,13 +12,14 @@
     
     <h1>Member's List</h1>
     <ul>
-        {% get_member_emails as emails %}
-        {% for email in emails %}
-            <li>{{ email }} starring as {{username}}</li>
+        {% get_member_emails as members %}
+        {% for email, username in members %}
+            <li>{{ email }} starring as {{ username }}</li>
         {% empty %}
-            <li>No member's found.</li>
+            <li>No members found.</li>
         {% endfor %}
     </ul>
+    
     <div class="pagination">
         {% if members.has_previous %}
             <a href="?page={{ members.previous_page_number }}">previous</a>
