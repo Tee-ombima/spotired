@@ -1,4 +1,5 @@
 @import url('fontawesome.css');
+@import url('fontawesome.min.css');
 
 
 a:not(.nav-link):not(.wagtail-userbar-link):not(.wagtail-userbar__item>a):not(.card-link):not(.page-link):not(.btn) {
