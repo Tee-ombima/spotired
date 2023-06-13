@@ -11,30 +11,26 @@
     {% endfor %}
     
     <h1>Member's List</h1>
-    {% get_member_emails as members %}
-
     {% if members %}
-        {% paginate members by 20 as paginated_members %}
         <ul>
-            {% for member in paginated_members %}
-                {% get_user_from_email member.email as user %}
-                <li>{{ user.email }} starring as {{ user.username }}</li>
+            {% for member in members %}
+                <li>{{ member.email }} starring as {{ member.username }}</li>
             {% empty %}
                 <li>No members found.</li>
             {% endfor %}
         </ul>
 
         <div class="pagination">
-            {% if paginated_members.has_previous %}
-                <a href="?page={{ paginated_members.previous_page_number }}">previous</a>
+            {% if members.has_previous %}
+                <a href="?page={{ members.previous_page_number }}">previous</a>
             {% endif %}
 
             <span class="current-page">
-                Page {{ paginated_members.number }} of {{ paginated_members.paginator.num_pages }}
+                Page {{ members.number }} of {{ members.paginator.num_pages }}
             </span>
 
-            {% if paginated_members.has_next %}
-                <a href="?page={{ paginated_members.next_page_number }}">next</a>
+            {% if members.has_next %}
+                <a href="?page={{ members.next_page_number }}">next</a>
             {% endif %}
         </div>
     {% else %}
