@@ -1,4 +1,3 @@
-
 {% extends "base.html" %}
 
 {% load tz %}
@@ -10,6 +9,10 @@
 
 {% block body_class %}template-magazineindexpage{% endblock %}
 
+{% block extra_css %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-7WfPjOp+Rl/ZfTsDj4JK1swbNleHVmq62rEu2BtFLG6VRjtrNTy06fdEeGmd2EVzvY08hFqlm+8c+mrbPLoWsg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+{% endblock %}
+
 {% block content %}
     <h1>
         {{ page.title }}
@@ -18,18 +21,14 @@
     <div class="intro">
         {{ page.intro | richtext }}
     </div>
-    <style>
-        .star-icon {
-            color: goldenrod; /* Set the color to golden */
-        }
-    </style>
+    
     {% if blogs %}
         {% for blog in blogs %}
         <article class="box page-content">
             {% image blog.display_image fill-800x240 as my_image %}
             <section>
                 <h5 class="card-title font-weight-bold">
-                    <i class="fa fa-star star-icon" aria-hidden="true"></i>{{ blog.title }}
+                    <i class="fas fa-star star-icon" aria-hidden="true"></i>{{ blog.title }}
                 </h5>
                 {% if my_image %}
                 <span class="img-responsive">
@@ -37,13 +36,13 @@
                 </span>
                 {% endif %}
                 <p class="author-category-date">
-                    <i class="fa fa-user" aria-hidden="true"></i>
+                    <i class="fas fa-user" aria-hidden="true"></i>
                     <a href="?author={{ blog.author.id }}">{{ blog.author.email }}</a>
                     &nbsp;&nbsp;
-                    <i class="fa fa-folder folder-icon" aria-hidden="true"></i>
+                    <i class="fas fa-folder folder-icon" aria-hidden="true"></i>
                     <a href="?category={{ blog.category }}">{{ blog.category }}</a>
                     &nbsp;&nbsp;
-                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                    <i class="fas fa-calendar" aria-hidden="true"></i>
                     {{ blog.start_date | timezone:"Africa/Nairobi" | date:"F d, Y" }} Africa/Nairobi
                 </p>
                
