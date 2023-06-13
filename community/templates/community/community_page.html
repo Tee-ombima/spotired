@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load wagtailcore_tags wagtailimages_tags member_tags wagtailcore_pagination %}
+{% load wagtailcore_tags wagtailimages_tags member_tags %}
 
 {% block body_class %}template-community-page{% endblock %}
 
@@ -14,31 +14,28 @@
     {% get_member_emails as members %}
 
     {% if members %}
-        {% paginate members by 20 %}
+        {% paginate members by 20 as paginated_members %}
         <ul>
-            {% for member in members %}
+            {% for member in paginated_members %}
                 {% get_user_from_email member.email as user %}
                 <li>{{ user.email }} starring as {{ user.username }}</li>
             {% empty %}
                 <li>No members found.</li>
             {% endfor %}
         </ul>
-        
 
         <div class="pagination">
-            <span class="step-links">
-                {% if members.has_previous %}
-                    <a href="?page={{ members.previous_page_number }}">previous</a>
-                {% endif %}
+            {% if paginated_members.has_previous %}
+                <a href="?page={{ paginated_members.previous_page_number }}">previous</a>
+            {% endif %}
 
-                <span class="current-page">
-                    Page {{ members.number }} of {{ members.paginator.num_pages }}
-                </span>
-
-                {% if members.has_next %}
-                    <a href="?page={{ members.next_page_number }}">next</a>
-                {% endif %}
+            <span class="current-page">
+                Page {{ paginated_members.number }} of {{ paginated_members.paginator.num_pages }}
             </span>
+
+            {% if paginated_members.has_next %}
+                <a href="?page={{ paginated_members.next_page_number }}">next</a>
+            {% endif %}
         </div>
     {% else %}
         <p>No members found.</p>
