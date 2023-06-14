@@ -4,6 +4,29 @@ a:not(.nav-link):not(.wagtail-userbar-link):not(.wagtail-userbar__item>a):not(.c
 	transition: background-color .5s;
 }
 
+.sticky-top img {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+} 
+.sticky-top {
+  position: relative;
+}
+.member-list {
+  height: 300px;
+  overflow-y: auto;
+}
+
+.member-list ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.member-list ul li {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
 
 body {
 	background-color: #f0f4f7;
@@ -158,10 +181,10 @@ p {
 	padding: 50px 0;
 	text-align: center;
   }
-  .socialCol li {
+.socialCol li {
 	display: inline-block;
   }
-  .socialCol li + li {
+.socialCol li + li {
 	padding-left: 35px;
   }
 .socialCol img {
