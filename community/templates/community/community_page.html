@@ -1,29 +1,30 @@
 {% extends "base.html" %}
 {% load wagtailcore_tags wagtailimages_tags member_tags %}
-
-{% block body_class %}template-community-page{% endblock %}
 {% load static %}
 
+{% block body_class %}template-community-page{% endblock %}
+
 {% block content %}
-<div class="page-background" style="background-image: url('{% static 'img/wrld.jpeg' %}');">
-    <h1>{{ page.title }}</h1>
+    <div class="">
+            <h1>{{ page.title }}</h1>
 
-    {% for block in page.body %}
-        {% include_block block %}
-    {% endfor %}
-
-    <div class="member-list">
-        <ul>
-            {% get_member_emails as members %}
-            {% for email, username in members %}
-                <li>{{ email }} starring as {{ username }}</li>
-            {% empty %}
-                <li>No members found.</li>
+            {% for block in page.body %}
+                <div>
+                    {% include_block block %}
+                </div>
             {% endfor %}
-        </ul>
+            <div class="content-container" style="background-image: url('{% static 'img/wrld.jpeg' %}'); background-repeat: no-repeat; background-size: cover; background-position: center;">
+
+            <div class="member-list">
+                <ul>
+                    {% get_member_emails as members %}
+                    {% for email, username in members %}
+                        <li style="color: rgb(248, 203, 3);">{{ username }} ~ {{ email }}</li>
+                    {% empty %}
+                        <li style="color: white;">No members found.</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
     </div>
-
-</div>
-
-
 {% endblock %}

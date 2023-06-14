@@ -231,3 +231,31 @@ a{
   text-decoration-line: none;
   
 }
+
+.page-background {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+
+}
+.content-container {
+  text-align: center;
+  z-index: 1;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  margin: 0 auto;
+}
+
+.member-list {
+  margin-top: 20px;
+}
+
+.member-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.member-list li {
+  margin-bottom: 10px;
+}
