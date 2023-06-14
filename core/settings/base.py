@@ -316,7 +316,7 @@ SITE_ID = 1
 
 WAGTAILADMIN_BASE_URL = '/staffarea'
 # WAGTAIL_FRONTEND_LOGIN_URL = '/accounts/login/'
-WAGTAIL_FRONTEND_LOGIN_URL = '/staffarea/login/'
+#WAGTAIL_FRONTEND_LOGIN_URL = '/staffarea/login/'
 
 # COLLECTFAST_STRATEGY = "collectfast.strategies.filesystem.FileSystemStrategy"
 # COLLECTFAST_ENABLED = False
